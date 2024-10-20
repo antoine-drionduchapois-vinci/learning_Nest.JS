@@ -13,10 +13,11 @@ export class FighterController {
 
   @Post()
   createFighter(@Body() fighterDto: FighterDto) {
-   if(this.fighterService.createFighter(fighterDto)){
-    return 'Fighter created succesfully';
-   }else{
-    return 'Error creating fighter';
-   }
+    try {
+      console.log(fighterDto);
+      return this.fighterService.createFighter(fighterDto);
+    } catch (error) {
+      return Error;
+    }
   }
 }
